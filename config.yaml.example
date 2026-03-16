@@ -1,0 +1,42 @@
+# IOC Correlation Engine — sample configuration
+# Copy this file to config.yaml and fill in your API keys.
+
+database:
+  # SQLite file path.  Use ":memory:" for ephemeral / testing runs.
+  path: ioc_engine.db
+
+sources:
+  alienvault_otx:
+    enabled: true
+    # API key — or set the OTX_API_KEY environment variable.
+    api_key: ""
+    # Maximum number of IOCs to fetch from OTX subscribed pulses.
+    limit: 1000
+
+  abuseipdb:
+    enabled: true
+    # API key — or set the ABUSEIPDB_API_KEY environment variable.
+    api_key: ""
+    # Only include IPs with at least this confidence score (0-100).
+    confidence_minimum: 90
+    # Maximum number of IPs to fetch.
+    limit: 500
+
+  urlhaus:
+    enabled: true
+    # Maximum number of URLs to fetch from the public feed.
+    limit: 1000
+
+  local_file:
+    enabled: false
+    # Absolute or relative path to a CSV or JSON file of IOCs.
+    path: ""
+
+correlator:
+  # Ignore IOCs with a confidence score below this value (0-100).
+  min_confidence: 50
+
+reporter:
+  # Default output format when none is specified on the command line.
+  # Options: json | csv | html
+  default_format: json
