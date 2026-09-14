@@ -1,0 +1,2 @@
+# Authentication log file
+# Format: timestamp hostname service[pid]: message
